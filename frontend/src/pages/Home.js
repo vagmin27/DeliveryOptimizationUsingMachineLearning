@@ -10,7 +10,8 @@ import {
   ShieldCheck,
   Globe2,
   Box,
-  Truck
+  Truck,
+  Route
 } from 'lucide-react';
 
 const AnimatedBackground = () => (

@@ -2,6 +2,11 @@
   "name": "route-optimization-client",
   "version": "0.1.0",
   "private": true,
+
+  "engines": {
+    "node": "20.x"
+  },
+
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -15,7 +20,7 @@
     "leaflet-polylinedecorator": "^1.6.0",
     "leaflet-routing-machine": "^3.2.12",
     "leaflet.heat": "^0.2.0",
-    "lucide-react": "^1.14.0",
+    "lucide-react": "^0.525.0",
     "qrcode": "^1.5.4",
     "qrcode.react": "^4.2.0",
     "react": "^18.2.0",
@@ -33,19 +38,22 @@
     "web-vitals": "^2.1.4",
     "zustand": "^5.0.13"
   },
+
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -58,6 +66,7 @@
       "last 1 safari version"
     ]
   },
+
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",

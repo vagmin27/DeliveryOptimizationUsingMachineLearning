@@ -6,6 +6,7 @@ import '../styles/OptimizationDetail.css';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { useToast } from '../components/ToastProvider';
 import { useAuth } from '../context/AuthContext';
+import { Calendar, Download, BarChart3, Printer, Route, Settings, Clock, Truck } from 'lucide-react';
 
 const OptimizationDetail = () => {
   const { id } = useParams();
@@ -127,23 +128,23 @@ return (
     <div className="optimization-header">
       <div>
         <h1>{optimization.name}</h1>
-        <p className="optimization-date">
-          <i className="fas fa-calendar"></i>{' '}
+        <p className="optimization-date flex items-center gap-1.5 text-text-secondary text-sm">
+          <Calendar className="w-4 h-4 text-neon-primary" />
           {new Date(optimization.date).toLocaleDateString()}
         </p>
       </div>
-      <div className="optimization-actions">
-        <button className="btn btn-secondary rounded-lg px-4 py-2" onClick={handleExport}>
-          <i className="fas fa-download"></i> Export JSON
+      <div className="optimization-actions flex gap-3">
+        <button className="btn btn-secondary rounded-lg px-4 py-2 flex items-center gap-2" onClick={handleExport}>
+          <Download className="w-4 h-4" /> Export JSON
         </button>
-        <Link to={`/optimizations/${optimization._id}/compare`} className="btn btn-info rounded-lg px-4 py-2">
-          <i className="fas fa-chart-bar"></i> Compare Algorithms
+        <Link to={`/optimizations/${optimization._id}/compare`} className="btn btn-info rounded-lg px-4 py-2 flex items-center gap-2">
+          <BarChart3 className="w-4 h-4" /> Compare Algorithms
           {optimization.algorithmResults && optimization.algorithmResults.length > 1 && (
-            <span className="comparison-badge">{optimization.algorithmResults.length}</span>
+            <span className="comparison-badge ml-1 bg-neon-secondary text-white text-[10px] px-1.5 py-0.5 rounded-full">{optimization.algorithmResults.length}</span>
           )}
         </Link>
-        <Link to={`/optimizations/${optimization._id}/print`} className="btn btn-outline rounded-lg px-4 py-2">
-          <i className="fas fa-print"></i> Print Route Sheets
+        <Link to={`/optimizations/${optimization._id}/print`} className="btn btn-outline rounded-lg px-4 py-2 flex items-center gap-2">
+          <Printer className="w-4 h-4" /> Print Route Sheets
         </Link>
         <Link to="/optimizations" className="btn btn-primary rounded-lg px-4 py-2">
           Back to List
@@ -151,57 +152,57 @@ return (
       </div>
     </div>
 
-    <div className="optimization-summary">
-      <div className="summary-card" data-aos="fade-up">
-        <div className="summary-icon">
-          <i className="fas fa-route"></i>
+    <div className="optimization-summary grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div className="summary-card glass-panel p-6 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-neon-primary/50 transition-colors" data-aos="fade-up">
+        <div className="summary-icon w-12 h-12 bg-neon-primary/10 rounded-xl flex items-center justify-center border border-neon-primary/30">
+          <Route className="w-6 h-6 text-neon-primary" />
         </div>
         <div className="summary-content">
-          <h3>Routes</h3>
-          <p className="summary-value">{optimization.routes.length}</p>
+          <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-1">Routes</h3>
+          <p className="summary-value text-2xl font-bold text-white">{optimization.routes.length}</p>
         </div>
       </div>
-      <div className="summary-card" data-aos="fade-up" data-aos-delay="50">
-        <div className="summary-icon">
-          <i className="fas fa-cogs"></i>
+      <div className="summary-card glass-panel p-6 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-neon-secondary/50 transition-colors" data-aos="fade-up" data-aos-delay="50">
+        <div className="summary-icon w-12 h-12 bg-neon-secondary/10 rounded-xl flex items-center justify-center border border-neon-secondary/30">
+          <Settings className="w-6 h-6 text-neon-secondary" />
         </div>
         <div className="summary-content">
-          <h3>Algorithm</h3>
-          <p className="summary-value">
+          <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-1">Algorithm</h3>
+          <p className="summary-value text-xl font-bold text-white">
             {optimization.selectedAlgorithm
               ? optimization.selectedAlgorithm.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())
               : 'Clarke Wright'
             }
           </p>
           {optimization.comparisonRun && (
-            <small className="comparison-indicator">Compared {optimization.algorithmResults?.length || 0} algorithms</small>
+            <small className="comparison-indicator text-[10px] text-text-secondary mt-0.5 block">Compared {optimization.algorithmResults?.length || 0} algorithms</small>
           )}
         </div>
       </div>
-      <div className="summary-card" data-aos="fade-up" data-aos-delay="100">
-        <div className="summary-icon">
-          <i className="fas fa-road"></i>
+      <div className="summary-card glass-panel p-6 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-neon-accent/50 transition-colors" data-aos="fade-up" data-aos-delay="100">
+        <div className="summary-icon w-12 h-12 bg-neon-accent/10 rounded-xl flex items-center justify-center border border-neon-accent/30">
+          <Route className="w-6 h-6 text-neon-accent" />
         </div>
         <div className="summary-content">
-          <h3>Total Distance</h3>
-          <p className="summary-value">
+          <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-1">Total Distance</h3>
+          <p className="summary-value text-2xl font-bold text-white">
             {useRoadNetwork && routedPolylines && Object.keys(routedPolylines).length > 0
               ? `${optimization.routes.reduce((sum, _, idx) => sum + (((routedPolylines[idx]?.distanceKm) || 0)), 0).toFixed(2)} km`
               : `${Number(optimization?.totalDistance ?? 0).toFixed(2)} km`}
           </p>
         </div>
       </div>
-      <div className="summary-card" data-aos="fade-up" data-aos-delay="150">
-        <div className="summary-icon">
-          <i className="fas fa-truck"></i>
+      <div className="summary-card glass-panel p-6 rounded-2xl border border-white/10 flex items-center gap-4 hover:border-neon-primary/50 transition-colors" data-aos="fade-up" data-aos-delay="150">
+        <div className="summary-icon w-12 h-12 bg-neon-primary/10 rounded-xl flex items-center justify-center border border-neon-primary/30">
+          <Truck className="w-6 h-6 text-neon-primary" />
         </div>
         <div className="summary-content">
-          <h3>Utilization</h3>
-          <p className="summary-value">
+          <h3 className="text-xs font-bold text-text-secondary uppercase tracking-wider mb-1">Utilization</h3>
+          <p className="summary-value text-xl font-bold text-white">
             {(() => {
               const vehCount = (optimization.vehicles || []).length || 1;
               const used = new Set((optimization.routes || []).map(r => r.vehicle).filter(Boolean)).size;
-              return `${used}/${vehCount} vehicles used`;
+              return `${used}/${vehCount} used`;
             })()}
           </p>
         </div>
@@ -303,17 +304,17 @@ return (
         {activeTab === 'routes' && (
           <div className="routes-tab">
             {optimization.routes && optimization.routes.map((route, index) => (
-              <div key={index} className="route-card rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
-                <h3>Route {index + 1} - {route.vehicleName}</h3>
-                <div className="chips">
-                  <span className="chip"><i className="fa fa-road"></i>{Number((route.distance ?? route.totalDistance) ?? 0).toFixed(2)} km</span>
-                  <span className="chip"><i className="fa fa-clock"></i>{route.duration ? `${Math.floor(route.duration / 60)} min` : 'N/A'}</span>
+              <div key={index} className="route-card rounded-xl border border-white/10 bg-white/5 p-6 shadow-sm mb-6">
+                <h3 className="text-lg font-bold text-white mb-3">Route {index + 1} - {route.vehicleName}</h3>
+                <div className="chips flex gap-2 mb-4">
+                  <span className="chip flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded text-xs text-text-secondary"><Route className="w-3.5 h-3.5 text-neon-primary" />{Number((route.distance ?? route.totalDistance) ?? 0).toFixed(2)} km</span>
+                  <span className="chip flex items-center gap-1 bg-white/5 px-2.5 py-1 rounded text-xs text-text-secondary"><Clock className="w-3.5 h-3.5 text-neon-secondary" />{route.duration ? `${Math.floor(route.duration / 60)} min` : 'N/A'}</span>
                 </div>
-                <p>
-                  <strong>Total Distance:</strong> {Number((route.distance ?? route.totalDistance) ?? 0).toFixed(2)} km
+                <p className="text-sm text-text-secondary mb-1">
+                  <strong className="text-white">Total Distance:</strong> {Number((route.distance ?? route.totalDistance) ?? 0).toFixed(2)} km
                 </p>
-                <p>
-                  <strong>Total Capacity:</strong> {route.totalCapacity}
+                <p className="text-sm text-text-secondary mb-4">
+                  <strong className="text-white">Total Capacity:</strong> {route.totalCapacity}
                 </p>
                 <div className="route-stops">
                   <h4>Stops</h4>

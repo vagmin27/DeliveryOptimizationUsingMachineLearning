@@ -101,7 +101,7 @@ const Login = () => {
                 onChange={onChange}
                 required
                 className="login-input"
-                placeholder="operator@logisai.com"
+                placeholder="operator@nexroute.com"
               />
             </div>
           </div>

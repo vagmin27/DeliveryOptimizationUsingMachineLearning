@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  FaTachometerAlt, FaTruck, FaMapMarkerAlt, 
-  FaRoute, FaCog 
-} from 'react-icons/fa';
+  LayoutDashboard, Truck, Map, 
+  Route, Settings 
+} from 'lucide-react';
 import '../styles/BottomNav.css';
 
 const BottomNav = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/dashboard', label: 'Dashboard', icon: <FaTachometerAlt /> },
-    { path: '/vehicles', label: 'Vehicles', icon: <FaTruck /> },
-    { path: '/locations', label: 'Locations', icon: <FaMapMarkerAlt /> },
-    { path: '/optimizations', label: 'Routes', icon: <FaRoute /> },
-    { path: '/settings', label: 'Settings', icon: <FaCog /> }
+    { path: '/dashboard', label: 'Analytics', icon: <LayoutDashboard size={20} /> },
+    { path: '/vehicles', label: 'Agents', icon: <Truck size={20} /> },
+    { path: '/locations', label: 'Clusters', icon: <Map size={20} /> },
+    { path: '/optimizations', label: 'Routes', icon: <Route size={20} /> },
+    { path: '/settings', label: 'Settings', icon: <Settings size={20} /> }
   ];
 
   return (

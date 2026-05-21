@@ -23,10 +23,11 @@
   content: '';
   position: absolute;
   top: 24px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background-color: var(--border-color);
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-primary), var(--neon-secondary));
+  opacity: 0.35;
   z-index: 1;
 }
 
@@ -43,7 +44,9 @@
   width: 50px;
   height: 50px;
   border-radius: var(--radius-full);
-  background-color: var(--bg-tertiary);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   color: var(--text-muted);
   display: flex;
   justify-content: center;
@@ -51,20 +54,34 @@
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
   transition: all var(--transition-normal);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--glass-border);
+  z-index: 5;
+  position: relative;
 }
-
+ 
 .step.active .step-number {
-  background-color: var(--bg-primary);
+  background: var(--glass-bg);
   color: var(--neon-primary);
   border-color: var(--neon-primary);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-glow), 0 0 15px color-mix(in srgb, var(--neon-primary) 30%, transparent);
+}
+ 
+.step.completed .step-number {
+  background: var(--neon-success);
+  color: transparent;
+  border-color: var(--neon-success);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--neon-success) 30%, transparent);
 }
 
-.step.completed .step-number {
-  background-color: var(--neon-success);
-  color: white;
-  border-color: var(--neon-success);
+.step.completed .step-number::after {
+  content: '✓';
+  position: absolute;
+  color: var(--text-inverse);
+  font-size: 1.25rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .step-label {
@@ -84,13 +101,15 @@
 }
 
 .step-content {
-  background-color: var(--card-bg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--card-border);
-  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-normal);
 }
 
 .step-vehicles h2,
@@ -110,51 +129,56 @@
 }
 
 .vehicle-card {
-  background-color: var(--bg-tertiary);
-  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all var(--transition-normal);
-  border: 2px solid transparent;
-}
-
-.vehicle-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-hover);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
 }
-
+ 
+.vehicle-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+ 
 .vehicle-card.selected,
 .vehicles-grid .vehicle-card.selected {
-  border-color: var(--neon-primary);
-  background-color: rgba(2, 132, 199, 0.08);
+  border-color: var(--neon-primary) !important;
+  background: color-mix(in srgb, var(--neon-primary) 12%, transparent) !important;
   outline: none;
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-glow), 0 0 15px color-mix(in srgb, var(--neon-primary) 20%, transparent) !important;
 }
-
+ 
 .dark .vehicle-card.selected,
 .dark .vehicles-grid .vehicle-card.selected {
-  background-color: rgba(0, 245, 255, 0.08);
+  border-color: var(--neon-primary) !important;
+  background: color-mix(in srgb, var(--neon-primary) 12%, transparent) !important;
 }
-
+ 
 .vehicle-icon {
   width: 50px;
   height: 50px;
-  background-color: rgba(2, 132, 199, 0.1);
+  background: color-mix(in srgb, var(--neon-primary) 12%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: var(--spacing-md);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-normal);
 }
-
+ 
 .dark .vehicle-icon {
-  background-color: rgba(0, 245, 255, 0.1);
+  background: color-mix(in srgb, var(--neon-primary) 12%, transparent);
 }
-
+ 
 .vehicle-icon i {
   font-size: 1.5rem;
   color: var(--neon-primary);
@@ -202,21 +226,21 @@
 
 .locations-table tr {
   cursor: pointer;
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
-
+ 
 .locations-table tr.selected,
 .locations-table .selected {
-  background-color: rgba(2, 132, 199, 0.08);
+  background: color-mix(in srgb, var(--neon-primary) 12%, transparent) !important;
+  color: var(--text-primary);
 }
-
-.dark .locations-table tr.selected,
-.dark .locations-table .selected {
-  background-color: rgba(0, 245, 255, 0.08);
-}
-
+ 
 .locations-table tr:hover {
-  background-color: var(--bg-tertiary);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark .locations-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 /* ==========================================================================
@@ -249,11 +273,14 @@
 }
 
 .summary-stats {
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-item {

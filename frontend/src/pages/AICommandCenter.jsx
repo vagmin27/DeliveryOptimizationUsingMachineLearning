@@ -114,13 +114,13 @@ const AICommandCenter = () => {
         </div>
 
         {/* Simulation Controls */}
-        <div className="glass-panel border border-neon-primary/30 rounded-xl p-2 flex items-center gap-2 shadow-[0_0_20px_rgba(0,245,255,0.15)]">
+        <div className="glass-panel border border-neon-primary/30 rounded-xl p-2 flex items-center gap-2 shadow-[0_0_20px_rgba(99,102,241,0.15)]">
           <button 
             onClick={toggleSimulation}
             className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 ${
               simRunning 
                 ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30' 
-                : 'bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(0,245,255,0.5)]'
+                : 'bg-neon-primary text-white hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]'
             }`}
           >
             {simRunning ? <><Pause size={18} /> PAUSE</> : <><Play size={18} /> INITIATE</>}
@@ -168,7 +168,7 @@ const AICommandCenter = () => {
                 onClick={() => setShowHeatmap(false)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg backdrop-blur-md border transition-all ${
                   !showHeatmap 
-                    ? 'bg-neon-primary/20 border-neon-primary text-neon-primary shadow-[0_0_10px_rgba(0,245,255,0.3)]' 
+                    ? 'bg-neon-primary/20 border-neon-primary text-neon-primary shadow-[0_0_10px_rgba(99,102,241,0.3)]' 
                     : 'bg-background/80 border-white/10 text-white/70 hover:text-white'
                 }`}
               >
@@ -287,11 +287,11 @@ const AICommandCenter = () => {
           >
             {/* Terminal Background Effect */}
             <div className="absolute inset-0 bg-[#050510] pointer-events-none"></div>
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(0, 245, 255, 0.5) 1px, transparent 1px)', backgroundSize: '100% 3px' }}></div>
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(99, 102, 241, 0.5) 1px, transparent 1px)', backgroundSize: '100% 3px' }}></div>
 
             <div className="p-4 border-b border-white/5 flex items-center gap-2 bg-black/40 relative z-10">
               <Terminal size={16} className="text-neon-primary" />
-              <span className="text-white font-bold tracking-wide text-sm font-mono">ROOT@LOGISAI:~/EXECUTION_LOG</span>
+              <span className="text-white font-bold tracking-wide text-sm font-mono">ROOT@NEXROUTE:~/EXECUTION_LOG</span>
             </div>
             
             <div className="flex-1 overflow-y-auto p-4 space-y-2 font-mono text-xs custom-scrollbar relative z-10">

@@ -52,7 +52,7 @@ const aiLogs = [
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-background/90 backdrop-blur-md border border-neon-primary/30 p-3 rounded-lg shadow-[0_0_15px_rgba(0,245,255,0.2)]">
+      <div className="bg-background/90 backdrop-blur-md border border-neon-primary/30 p-3 rounded-lg shadow-[0_0_15px_rgba(99,102,241,0.2)]">
         <p className="text-text-secondary text-xs mb-2">{label}</p>
         {payload.map((entry, index) => (
           <p key={index} className="text-sm font-bold" style={{ color: entry.color }}>
@@ -113,7 +113,7 @@ const Dashboard = () => {
       >
         <div>
           <h1 className="text-3xl font-display font-bold text-white mb-1 flex items-center gap-3">
-            Operations Command <div className="w-2 h-2 rounded-full bg-neon-accent animate-pulse shadow-[0_0_10px_rgba(57,255,20,0.8)]"></div>
+            Operations Command <div className="w-2 h-2 rounded-full bg-neon-accent animate-pulse shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
           </h1>
           <p className="text-text-secondary text-sm">Real-time overview of AI dispatch and logistics network.</p>
         </div>
@@ -122,7 +122,7 @@ const Dashboard = () => {
           <button className="px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-white text-sm font-medium transition-all duration-300 flex items-center gap-2">
             <Activity size={16} className="text-neon-primary" /> Live View
           </button>
-          <Link to="/optimizations/new" className="px-4 py-2 rounded-xl bg-neon-primary text-background text-sm font-bold shadow-[0_0_15px_rgba(0,245,255,0.4)] hover:shadow-[0_0_25px_rgba(0,245,255,0.6)] transition-all duration-300 flex items-center gap-2">
+          <Link to="/optimizations/new" className="px-4 py-2 rounded-xl bg-neon-primary text-white font-bold text-sm shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_rgba(99,102,241,0.6)] hover:bg-white hover:text-background transition-all duration-300 flex items-center gap-2">
             <Plus size={16} /> New Optimization
           </Link>
         </div>
@@ -186,7 +186,7 @@ const Dashboard = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="glass-card rounded-2xl p-6 relative overflow-hidden group border border-neon-primary/30 shadow-[0_0_15px_rgba(0,245,255,0.1)]">
+        <motion.div variants={itemVariants} className="glass-card rounded-2xl p-6 relative overflow-hidden group border border-neon-primary/30 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
           <div className="flex justify-between items-start mb-4 relative z-10">
             <div>
               <p className="text-neon-primary text-xs uppercase tracking-wider font-bold mb-1">System Status</p>
@@ -223,15 +223,15 @@ const Dashboard = () => {
               <AreaChart data={performanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorEfficiency" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#00F5FF" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#00F5FF" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#6366F1" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#6366F1" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
                 <XAxis dataKey="time" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} />
                 <RechartsTooltip content={<CustomTooltip />} />
-                <Area type="monotone" dataKey="efficiency" stroke="#00F5FF" strokeWidth={3} fillOpacity={1} fill="url(#colorEfficiency)" />
+                <Area type="monotone" dataKey="efficiency" stroke="#6366F1" strokeWidth={3} fillOpacity={1} fill="url(#colorEfficiency)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -287,7 +287,7 @@ const Dashboard = () => {
                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} />
                 <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} width={80} />
                 <RechartsTooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.05)' }} />
-                <Bar dataKey="load" name="Workload %" fill="#7B61FF" radius={[0, 4, 4, 0]} barSize={12} />
+                <Bar dataKey="load" name="Workload %" fill="#8B5CF6" radius={[0, 4, 4, 0]} barSize={12} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -308,14 +308,14 @@ const Dashboard = () => {
               <div className="absolute inset-0 animated-bg-grid opacity-30 pointer-events-none"></div>
               
               {/* Radar sweep effect */}
-              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,rgba(0,245,255,0.2)_360deg)] rounded-full animate-[spin_4s_linear_infinite] pointer-events-none origin-center"></div>
+              <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,rgba(99,102,241,0.2)_360deg)] rounded-full animate-[spin_4s_linear_infinite] pointer-events-none origin-center"></div>
               
               {/* Fake markers */}
-              <div className="absolute top-[30%] left-[40%] w-3 h-3 bg-neon-accent rounded-full shadow-[0_0_10px_#39FF14] animate-pulse"></div>
-              <div className="absolute top-[60%] left-[20%] w-3 h-3 bg-neon-primary rounded-full shadow-[0_0_10px_#00F5FF] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute top-[45%] left-[70%] w-3 h-3 bg-neon-secondary rounded-full shadow-[0_0_10px_#7B61FF] animate-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-[30%] left-[40%] w-3 h-3 bg-neon-accent rounded-full shadow-[0_0_10px_#06B6D4] animate-pulse"></div>
+              <div className="absolute top-[60%] left-[20%] w-3 h-3 bg-neon-primary rounded-full shadow-[0_0_10px_#6366F1] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="absolute top-[45%] left-[70%] w-3 h-3 bg-neon-secondary rounded-full shadow-[0_0_10px_#8B5CF6] animate-pulse" style={{ animationDelay: '1s' }}></div>
               
-              <div className="bg-background/80 backdrop-blur-md px-6 py-3 rounded-lg border border-neon-primary/30 text-center shadow-[0_0_20px_rgba(0,245,255,0.1)]">
+              <div className="bg-background/80 backdrop-blur-md px-6 py-3 rounded-lg border border-neon-primary/30 text-center shadow-[0_0_20px_rgba(99,102,241,0.1)]">
                 <p className="text-neon-primary font-bold text-sm mb-1">Live Tracking Module</p>
                 <p className="text-xs text-text-secondary">Connecting to WebSockets...</p>
               </div>
@@ -344,8 +344,8 @@ const Dashboard = () => {
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} />
                 <RechartsTooltip content={<CustomTooltip />} />
                 <Legend iconType="circle" wrapperStyle={{ fontSize: '12px', color: '#94A3B8' }} />
-                <Line type="monotone" dataKey="actual" name="Historical Actual" stroke="#00F5FF" strokeWidth={3} dot={{ r: 4, fill: '#00F5FF' }} />
-                <Line type="monotone" dataKey="predicted" name="AI Prediction" stroke="#7B61FF" strokeWidth={3} strokeDasharray="5 5" dot={{ r: 4, fill: '#7B61FF' }} />
+                <Line type="monotone" dataKey="actual" name="Historical Actual" stroke="#6366F1" strokeWidth={3} dot={{ r: 4, fill: '#6366F1' }} />
+                <Line type="monotone" dataKey="predicted" name="AI Prediction" stroke="#8B5CF6" strokeWidth={3} strokeDasharray="5 5" dot={{ r: 4, fill: '#8B5CF6' }} />
               </LineChart>
             </ResponsiveContainer>
           </div>

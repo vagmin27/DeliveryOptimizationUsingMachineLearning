@@ -5,7 +5,7 @@ from clustering import perform_clustering
 from assignment import assign_agents
 import uvicorn
 
-app = FastAPI(title="LogisAI ML Microservice", version="2.0.0")
+app = FastAPI(title="NexRoute ML Microservice", version="2.0.0")
 
 class LocationPoint(BaseModel):
     id: str

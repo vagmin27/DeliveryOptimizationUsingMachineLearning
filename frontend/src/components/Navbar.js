@@ -66,7 +66,7 @@ const Navbar = () => {
                 <Zap className="text-neon-primary z-10 group-hover:scale-110 transition-transform duration-300" size={24} />
               </div>
               <span className="text-xl font-display font-bold tracking-wider text-white group-hover:text-neon-primary transition-colors duration-300">
-                LOGIS<span className="text-neon-secondary">AI</span>
+                Nex<span className="text-neon-secondary">Route</span>
               </span>
             </Link>
 
@@ -92,7 +92,7 @@ const Navbar = () => {
                       {isActive && (
                         <motion.div 
                           layoutId="nav-indicator"
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-neon-primary rounded-full shadow-[0_0_10px_rgba(0,245,255,0.8)]"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-neon-primary rounded-full shadow-[0_0_10px_rgba(99,102,241,0.8)]"
                           transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         />
                       )}
@@ -127,7 +127,7 @@ const Navbar = () => {
                   <Link to="/login" className="px-5 py-2 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-colors duration-300">
                     Login
                   </Link>
-                  <Link to="/register" className="relative px-6 py-2 rounded-xl text-sm font-bold text-background bg-neon-primary hover:bg-white shadow-[0_0_15px_rgba(0,245,255,0.4)] hover:shadow-[0_0_25px_rgba(0,245,255,0.6)] transition-all duration-300">
+                  <Link to="/register" className="relative px-6 py-2 rounded-xl text-sm font-bold text-white bg-neon-primary hover:bg-white hover:text-background shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_rgba(99,102,241,0.6)] transition-all duration-300">
                     Get Started
                   </Link>
                 </div>
@@ -188,7 +188,7 @@ const Navbar = () => {
                   <Link 
                     to="/register" 
                     onClick={() => setIsOpen(false)}
-                    className="w-full py-4 text-center rounded-xl bg-neon-primary text-background font-bold text-lg shadow-[0_0_20px_rgba(0,245,255,0.4)]"
+                    className="w-full py-4 text-center rounded-xl bg-neon-primary text-white font-bold text-lg shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:bg-white hover:text-background transition-all duration-300"
                   >
                     Get Started
                   </Link>

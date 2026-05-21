@@ -4,14 +4,14 @@ import VehicleService from '../services/vehicle.service';
 import '../styles/Vehicles.css';
 import { useToast } from '../components/ToastProvider';
 import { 
-  FaPlus, 
-  FaTruck, 
-  FaEdit, 
-  FaTrash, 
-  FaRoute, 
-  FaChartLine,
-  FaCog
-} from 'react-icons/fa';
+  Plus, 
+  Truck, 
+  Edit, 
+  Trash2, 
+  Route, 
+  TrendingUp,
+  Settings
+} from 'lucide-react';
 
 const Vehicles = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -90,9 +90,9 @@ const Vehicles = () => {
           </div>
           <Link 
             to="/vehicles/add" 
-            className="flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(0,245,255,0.5)]"
+            className="flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 bg-neon-primary text-white hover:bg-white hover:text-background shadow-[0_0_15px_rgba(99,102,241,0.4)]"
           >
-            <FaPlus />
+            <Plus size={16} />
             ADD AGENT
           </Link>
         </div>
@@ -106,7 +106,7 @@ const Vehicles = () => {
                 <p className="text-3xl font-bold text-white">{stats.total}</p>
               </div>
               <div className="w-12 h-12 bg-neon-primary/10 rounded-xl flex items-center justify-center border border-neon-primary/30">
-                <FaTruck className="text-2xl text-neon-primary" />
+                <Truck className="text-2xl text-neon-primary" size={24} />
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ const Vehicles = () => {
                 <p className="text-3xl font-bold text-white">{stats.totalCount}</p>
               </div>
               <div className="w-12 h-12 bg-neon-secondary/10 rounded-xl flex items-center justify-center border border-neon-secondary/30">
-                <FaRoute className="text-2xl text-neon-secondary" />
+                <Route className="text-2xl text-neon-secondary" size={24} />
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ const Vehicles = () => {
                 <p className="text-3xl font-bold text-white">{stats.totalCapacity}</p>
               </div>
               <div className="w-12 h-12 bg-neon-accent/10 rounded-xl flex items-center justify-center border border-neon-accent/30">
-                <FaChartLine className="text-2xl text-neon-accent" />
+                <TrendingUp className="text-2xl text-neon-accent" size={24} />
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ const Vehicles = () => {
                 <p className="text-3xl font-bold text-white">{stats.avgCapacity}</p>
               </div>
               <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center border border-white/20">
-                <FaCog className="text-2xl text-white" />
+                <Settings className="text-2xl text-white" size={24} />
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@ const Vehicles = () => {
 
         {error && (
           <div className="alert alert-danger mb-6">
-            <FaTruck className="mr-2" />
+            <Truck className="mr-2" size={18} />
             {error}
           </div>
         )}
@@ -158,7 +158,7 @@ const Vehicles = () => {
         {vehicles.length === 0 ? (
           <div className="glass-panel rounded-3xl border border-white/10 p-12 text-center">
             <div className="w-24 h-24 bg-neon-primary/10 border border-neon-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaTruck className="text-4xl text-neon-primary" />
+              <Truck className="text-4xl text-neon-primary" size={48} />
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">
               No agents deployed
@@ -168,9 +168,9 @@ const Vehicles = () => {
             </p>
             <Link 
               to="/vehicles/add" 
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(0,245,255,0.5)] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold bg-neon-primary text-white hover:bg-white hover:text-background hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition-all"
             >
-              <FaPlus />
+              <Plus size={18} />
               Deploy First Agent
             </Link>
           </div>
@@ -191,20 +191,20 @@ const Vehicles = () => {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="w-12 h-12 bg-neon-primary/10 border border-neon-primary/30 rounded-xl flex items-center justify-center text-neon-primary">
-                        <FaTruck className="text-xl" />
+                        <Truck className="text-xl" size={20} />
                       </div>
                       <div className="flex gap-2">
                         <Link 
                           to={`/vehicles/edit/${vehicle._id}`} 
                           className="px-3 py-1.5 text-xs font-bold rounded bg-white/10 text-white hover:bg-white/20 transition-colors"
                         >
-                          <FaEdit className="inline mr-1" /> Edit
+                          <Edit className="inline mr-1" size={14} /> Edit
                         </Link>
                         <button
                           className="px-3 py-1.5 text-xs font-bold rounded bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors border border-red-500/30"
                           onClick={() => handleDelete(vehicle._id)}
                         >
-                          <FaTrash className="inline mr-1" /> Delete
+                          <Trash2 className="inline mr-1" size={14} /> Delete
                         </button>
                       </div>
                     </div>
@@ -224,7 +224,7 @@ const Vehicles = () => {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="bg-white/5 border border-white/10 p-3 rounded-xl">
                           <div className="flex items-center gap-2 mb-1">
-                            <FaChartLine className="text-neon-primary text-xs" />
+                            <TrendingUp className="text-neon-primary text-xs" size={12} />
                             <span className="text-[10px] font-bold text-text-secondary uppercase tracking-wider">
                               Payload Cap
                             </span>
@@ -236,7 +236,7 @@ const Vehicles = () => {
 
                         <div className="bg-white/5 border border-white/10 p-3 rounded-xl">
                           <div className="flex items-center gap-2 mb-1">
-                            <FaRoute className="text-neon-secondary text-xs" />
+                            <Route className="text-neon-secondary text-xs" size={12} />
                             <span className="text-[10px] font-bold text-text-secondary uppercase tracking-wider">
                               Units
                             </span>

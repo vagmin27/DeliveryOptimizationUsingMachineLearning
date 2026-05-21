@@ -4,7 +4,7 @@ import LocationService from '../services/location.service';
 import Map from '../components/Map';
 import '../styles/Locations.css';
 import { useToast } from '../components/ToastProvider';
-import { FaPlus, FaMapMarkedAlt, FaEdit, FaTrash, FaWarehouse, FaMapPin } from 'react-icons/fa';
+import { Plus, Map as MapIcon, Edit, Trash2, Warehouse, MapPin } from 'lucide-react';
 
 const Locations = () => {
   const [locations, setLocations] = useState([]);
@@ -115,9 +115,9 @@ const Locations = () => {
           </div>
           <Link 
             to="/locations/add" 
-            className="flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(0,245,255,0.5)]"
+            className="flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]"
           >
-            <FaPlus />
+            <Plus className="w-4 h-4" />
             ADD NODE
           </Link>
         </div>
@@ -131,7 +131,7 @@ const Locations = () => {
                 <p className="text-3xl font-bold text-white">{stats.total}</p>
               </div>
               <div className="w-12 h-12 bg-neon-primary/10 rounded-xl flex items-center justify-center border border-neon-primary/30">
-                <FaMapPin className="text-2xl text-neon-primary" />
+                <MapPin className="w-6 h-6 text-neon-primary" />
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const Locations = () => {
                 <p className="text-3xl font-bold text-white">{stats.depots}</p>
               </div>
               <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/30">
-                <FaWarehouse className="text-2xl text-orange-500" />
+                <Warehouse className="w-6 h-6 text-orange-500" />
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ const Locations = () => {
                 <p className="text-3xl font-bold text-white">{stats.deliveryPoints}</p>
               </div>
               <div className="w-12 h-12 bg-neon-accent/10 rounded-xl flex items-center justify-center border border-neon-accent/30">
-                <FaMapMarkedAlt className="text-2xl text-neon-accent" />
+                <MapIcon className="w-6 h-6 text-neon-accent" />
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ const Locations = () => {
 
         {error && (
           <div className="alert alert-danger mb-6">
-            <FaMapMarkedAlt className="mr-2" />
+            <MapIcon className="w-4 h-4 mr-2" />
             {error}
           </div>
         )}
@@ -209,7 +209,7 @@ const Locations = () => {
         {locations.length === 0 ? (
           <div className="glass-panel rounded-3xl border border-white/10 p-12 text-center">
             <div className="w-24 h-24 bg-neon-primary/10 border border-neon-primary/30 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaMapMarkedAlt className="text-4xl text-neon-primary" />
+              <MapIcon className="w-12 h-12 text-neon-primary" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">
               No nodes detected
@@ -219,9 +219,9 @@ const Locations = () => {
             </p>
             <Link 
               to="/locations/add" 
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(0,245,255,0.5)] transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition-all"
             >
-              <FaPlus />
+              <Plus className="w-4 h-4" />
               Add Initial Node
             </Link>
           </div>
@@ -280,11 +280,11 @@ const Locations = () => {
                       <td className="px-6 py-4">
                         {location.isDepot ? (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/30 rounded text-[10px] font-bold uppercase tracking-wider">
-                            <FaWarehouse /> HUB
+                            <Warehouse className="w-3.5 h-3.5" /> HUB
                           </span>
                         ) : (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-neon-primary/20 text-neon-primary border border-neon-primary/30 rounded text-[10px] font-bold uppercase tracking-wider">
-                            <FaMapPin /> DROP
+                            <MapPin className="w-3.5 h-3.5" /> DROP
                           </span>
                         )}
                       </td>
@@ -299,13 +299,13 @@ const Locations = () => {
                             to={`/locations/edit/${location._id}`} 
                             className="px-3 py-1.5 text-xs font-bold rounded bg-white/10 text-white hover:bg-white/20 transition-colors"
                           >
-                            <FaEdit className="inline mr-1" /> Edit
+                            <Edit className="inline mr-1 w-3.5 h-3.5" /> Edit
                           </Link>
                           <button
                             className="px-3 py-1.5 text-xs font-bold rounded bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors border border-red-500/30"
                             onClick={() => handleDelete(location._id)}
                           >
-                            <FaTrash className="inline mr-1" /> Delete
+                            <Trash2 className="inline mr-1 w-3.5 h-3.5" /> Delete
                           </button>
                         </div>
                       </td>

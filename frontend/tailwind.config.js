@@ -8,23 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#050816',
-        cardbg: 'rgba(15, 23, 42, 0.65)',
+        background: '#0F172A',
+        bgSecondary: '#111827',
+        cardbg: 'rgba(255, 255, 255, 0.08)',
         neon: {
-          primary: '#00F5FF',
-          secondary: '#7B61FF',
-          accent: '#39FF14',
-          danger: '#FF4D6D',
+          primary: '#6366F1',
+          secondary: '#8B5CF6',
+          accent: '#06B6D4',
+          danger: '#EF4444',
+          success: '#22C55E',
         },
         text: {
           primary: '#F8FAFC',
-          secondary: '#94A3B8',
+          secondary: '#CBD5E1',
         }
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
-        'display': ['Orbitron', 'Inter', 'system-ui', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'monospace'],
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'],
+        'display': ['"SF Pro Display"', '-apple-system', 'BlinkMacSystemFont', '"Inter"', '"Segoe UI"', 'sans-serif'],
+        'mono': ['"JetBrains Mono"', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -67,12 +69,12 @@ module.exports = {
           '50%': { transform: 'translateY(-20px)' },
         },
         pulseBorder: {
-          '0%, 100%': { borderColor: 'rgba(0, 245, 255, 0.3)' },
-          '50%': { borderColor: 'rgba(0, 245, 255, 1)' },
+          '0%, 100%': { borderColor: 'rgba(99, 102, 241, 0.3)' },
+          '50%': { borderColor: 'rgba(99, 102, 241, 1)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 10px rgba(0,245,255,0.2), 0 0 20px rgba(0,245,255,0.2)' },
-          '100%': { boxShadow: '0 0 20px rgba(0,245,255,0.6), 0 0 30px rgba(0,245,255,0.4)' },
+          '0%': { boxShadow: '0 0 10px rgba(99, 102, 241, 0.2), 0 0 20px rgba(99, 102, 241, 0.2)' },
+          '100%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.6), 0 0 30px rgba(99, 102, 241, 0.4)' },
         },
         'gradient-x': {
           '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
@@ -94,17 +96,17 @@ module.exports = {
         xl: '24px',
       },
       boxShadow: {
-        'neon-primary': '0 0 10px rgba(0, 245, 255, 0.5), 0 0 20px rgba(0, 245, 255, 0.3)',
-        'neon-secondary': '0 0 10px rgba(123, 97, 255, 0.5), 0 0 20px rgba(123, 97, 255, 0.3)',
-        'neon-accent': '0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3)',
-        'neon-danger': '0 0 10px rgba(255, 77, 109, 0.5), 0 0 20px rgba(255, 77, 109, 0.3)',
+        'neon-primary': '0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3)',
+        'neon-secondary': '0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3)',
+        'neon-accent': '0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3)',
+        'neon-danger': '0 0 10px rgba(239, 68, 68, 0.5), 0 0 20px rgba(239, 68, 68, 0.3)',
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-cyber': 'linear-gradient(135deg, #00F5FF 0%, #7B61FF 100%)',
-        'gradient-dark': 'linear-gradient(to bottom right, #050816, #0f172a)',
+        'gradient-cyber': 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)',
+        'gradient-dark': 'linear-gradient(to bottom right, #0F172A, #111827)',
         'animated-grid': 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
       },
     },

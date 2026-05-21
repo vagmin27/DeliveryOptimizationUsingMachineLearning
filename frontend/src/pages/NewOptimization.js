@@ -7,6 +7,7 @@ import Map from '../components/Map';
 import { useToast } from '../components/ToastProvider';
 import '../styles/NewOptimization.css';
 import { useAuth } from '../context/AuthContext';
+import { Truck } from 'lucide-react';
 
 const NewOptimization = () => {
   const navigate = useNavigate();
@@ -358,7 +359,7 @@ const NewOptimization = () => {
                     onClick={() => handleVehicleSelect(vehicle._id)}
                   >
                     <div className="vehicle-icon">
-                      <i className="fas fa-truck"></i>
+                      <Truck className="text-neon-primary w-6 h-6" />
                     </div>
                     <div className="vehicle-details">
                       <h3>{vehicle.name}</h3>

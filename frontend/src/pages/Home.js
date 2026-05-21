@@ -258,7 +258,7 @@ const Home = () => {
             
             <Link 
               to="/register" 
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-background font-bold text-lg hover:bg-neon-primary hover:shadow-[0_0_30px_rgba(0,245,255,0.5)] transition-all duration-300 relative z-10"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-background font-bold text-lg hover:bg-neon-primary hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all duration-300 relative z-10"
             >
               Start System <Zap size={20} />
             </Link>
@@ -269,7 +269,7 @@ const Home = () => {
       {/* Simple Footer */}
       <footer className="border-t border-white/10 py-8 text-center text-text-secondary text-sm">
         <div className="container mx-auto">
-          <p>© 2026 LogisAI Systems. All rights reserved. Terminal version 2.4.0</p>
+          <p>© 2026 NexRoute Systems. All rights reserved. Terminal version 2.4.0</p>
         </div>
       </footer>
     </div>

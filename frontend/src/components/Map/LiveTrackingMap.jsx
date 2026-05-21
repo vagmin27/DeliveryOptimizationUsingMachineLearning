@@ -16,8 +16,8 @@ const createAgentIcon = () => {
       <div class="relative w-12 h-12 flex items-center justify-center">
         <div class="absolute inset-0 bg-neon-primary rounded-full opacity-20 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
         <div class="absolute inset-2 bg-neon-primary rounded-full opacity-40 animate-pulse"></div>
-        <div class="relative z-10 w-8 h-8 bg-background border-2 border-neon-primary rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,245,255,0.8)]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00F5FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><path d="M15 18H9"/><circle cx="17" cy="18" r="2"/></svg>
+        <div class="relative z-10 w-8 h-8 bg-background border-2 border-neon-primary rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.8)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><path d="M15 18H9"/><circle cx="17" cy="18" r="2"/></svg>
         </div>
       </div>
     `,
@@ -59,10 +59,10 @@ export default function LiveTrackingMap({
   }, [parcels]);
 
   return (
-    <div className="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(0,245,255,0.05)] relative bg-background">
+    <div className="w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.05)] relative bg-background">
       {/* Radar Overlay Effect */}
       <div className="absolute inset-0 z-[400] pointer-events-none opacity-20">
-        <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,rgba(0,245,255,0.3)_360deg)] rounded-full animate-[spin_4s_linear_infinite] origin-center"></div>
+        <div className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,transparent_270deg,rgba(99,102,241,0.3)_360deg)] rounded-full animate-[spin_4s_linear_infinite] origin-center"></div>
       </div>
 
       <MapContainer 

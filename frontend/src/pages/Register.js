@@ -40,7 +40,7 @@ const Register = () => {
 
     try {
       await register(name, email, password);
-      notify('Clearance granted. Welcome to LogisAI Command Center.', 'success');
+      notify('Clearance granted. Welcome to NexRoute Command Center.', 'success');
       navigate('/dashboard');
     } catch (err) {
       const errorMsg = err.response?.data?.msg || 'Clearance request failed. Please try again.';
@@ -126,7 +126,7 @@ const Register = () => {
                 onChange={onChange}
                 required
                 className="login-input"
-                placeholder="operator@logisai.com"
+                placeholder="operator@nexroute.com"
               />
             </div>
           </div>

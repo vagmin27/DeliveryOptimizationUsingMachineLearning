@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OptimizationService from '../services/optimization.service';
 import '../styles/Optimizations.css';
+import { Plus } from 'lucide-react';
 import { useToast } from '../components/ToastProvider';
 
 const Optimizations = () => {
@@ -69,8 +70,8 @@ const Optimizations = () => {
               Manage Algorithmic Routing Protocols
             </p>
           </div>
-          <Link to="/optimizations/new" className="flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(0,245,255,0.5)]">
-            <i className="fas fa-plus"></i> NEW PROTOCOL
+          <Link to="/optimizations/new" className="flex items-center gap-2 px-6 py-2 rounded-lg font-bold transition-all duration-300 bg-neon-primary text-background hover:shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+            <Plus className="w-4 h-4" /> NEW PROTOCOL
           </Link>
         </div>
 

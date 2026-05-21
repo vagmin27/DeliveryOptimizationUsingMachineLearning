@@ -123,7 +123,7 @@ p {
 .btn-primary:hover {
   filter: brightness(1.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 245, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
 }
 
 .btn-secondary {
@@ -516,7 +516,7 @@ table tbody tr:hover {
 }
 
 .shadow-glow-lg {
-  box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
 }
 
 /* ==========================================================================
@@ -565,12 +565,12 @@ table tbody tr:hover {
 
 .premium-navbar:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: var(--shadow-md), 0 0 20px rgba(0, 245, 255, 0.05);
+  box-shadow: var(--shadow-md), 0 0 20px rgba(99, 102, 241, 0.05);
 }
 
 .dark .premium-navbar:hover {
-  border-color: rgba(0, 245, 255, 0.15);
-  box-shadow: var(--shadow-md), 0 0 25px rgba(0, 245, 255, 0.08);
+  border-color: rgba(99, 102, 241, 0.15);
+  box-shadow: var(--shadow-md), 0 0 25px rgba(99, 102, 241, 0.08);
 }
 
 /* When the navbar is scrolled */
@@ -582,8 +582,8 @@ table tbody tr:hover {
 
 .dark .premium-navbar.scrolled {
   background: rgba(12, 15, 36, 0.75) !important;
-  border-color: rgba(0, 245, 255, 0.2) !important;
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 245, 255, 0.15) !important;
+  border-color: rgba(99, 102, 241, 0.2) !important;
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(99, 102, 241, 0.15) !important;
 }
 
 /* Mobile Menu Glass Overlay */
@@ -632,8 +632,8 @@ table tbody tr:hover {
 .analytics-widget:hover, 
 .widget:hover, 
 .comparison-card:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: var(--shadow-lg), 0 0 25px rgba(0, 245, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg), 0 4px 20px color-mix(in srgb, var(--neon-primary) 8%, transparent) !important;
   border-color: var(--border-hover) !important;
 }
 
@@ -657,7 +657,7 @@ table tbody tr:hover {
 .search-section input:focus {
   border-color: var(--input-focus-border) !important;
   outline: none !important;
-  box-shadow: 0 0 15px rgba(0, 245, 255, 0.25) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.25) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -708,27 +708,27 @@ table tbody tr:hover {
 
 .Toastify__toast:hover {
   transform: scale(1.02) !important;
-  box-shadow: var(--shadow-lg), 0 8px 30px rgba(0, 245, 255, 0.15) !important;
+  box-shadow: var(--shadow-lg), 0 8px 30px rgba(99, 102, 241, 0.15) !important;
 }
 
 .Toastify__toast--success {
   border-left: 4px solid var(--neon-success) !important;
-  box-shadow: 0 0 15px rgba(22, 163, 74, 0.15) !important;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--neon-success) 12%, transparent) !important;
 }
 
 .Toastify__toast--error {
   border-left: 4px solid var(--neon-danger) !important;
-  box-shadow: 0 0 15px rgba(220, 38, 38, 0.15) !important;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--neon-danger) 12%, transparent) !important;
 }
 
 .Toastify__toast--warning {
   border-left: 4px solid var(--neon-warning) !important;
-  box-shadow: 0 0 15px rgba(234, 88, 12, 0.15) !important;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--neon-warning) 12%, transparent) !important;
 }
 
 .Toastify__toast--info {
   border-left: 4px solid var(--neon-info) !important;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.15) !important;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--neon-info) 12%, transparent) !important;
 }
 
 .Toastify__close-button {
@@ -765,4 +765,20 @@ table tbody tr:hover {
 
 .Toastify__progress-bar--info {
   background: var(--neon-info) !important;
+}
+
+/* Premium Leaflet Map Popup overrides */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  box-shadow: var(--shadow-lg), 0 0 15px rgba(99, 102, 241, 0.1) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+}
+
+.leaflet-popup-content {
+  margin: var(--spacing-sm) var(--spacing-md) !important;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", sans-serif !important;
 }

@@ -7,8 +7,11 @@
   width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
 .map-container {
@@ -126,7 +129,9 @@
 .stop-popup {
   padding: 16px;
   min-width: 220px;
-  background: var(--card-bg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   color: var(--text-primary);
 }
 
@@ -171,8 +176,10 @@
 
 .map-toolbar button {
   padding: 8px 16px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   color: var(--text-primary);
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -187,13 +194,16 @@
 
 /* Route visibility controls */
 .route-visibility-controls {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
   padding: 12px;
   max-height: 200px;
   overflow-y: auto;
   color: var(--text-primary);
+  box-shadow: var(--shadow-md);
 }
 
 .route-visibility-controls label {

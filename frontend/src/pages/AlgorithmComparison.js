@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaArrowLeft, FaTrophy, FaClock, FaRoute, FaChartBar, FaCalculator, FaBullseye } from 'react-icons/fa';
+import { ArrowLeft, Trophy, Clock, Route, BarChart3, Calculator, Target } from 'lucide-react';
 import OptimizationService from '../services/optimization.service';
 import { useToast } from '../components/ToastProvider';
 import '../styles/AlgorithmComparison.css';
@@ -121,7 +121,7 @@ const AlgorithmComparison = () => {
         <div className="container mx-auto px-6 py-8">
           <div className="comparison-header" data-aos="fade-up">
             <Link to={`/optimizations/${id}`} className="back-link">
-              <FaArrowLeft /> Back to Optimization
+              <ArrowLeft className="w-4 h-4" /> Back to Optimization
             </Link>
             <div className="header-content">
               <h1>Algorithm Comparison</h1>
@@ -131,7 +131,7 @@ const AlgorithmComparison = () => {
 
           <div className="no-comparison" data-aos="fade-up">
             <div className="no-data-icon">
-              <FaChartBar />
+              <BarChart3 className="w-12 h-12 mx-auto text-text-secondary" />
             </div>
             <h2>No Algorithm Comparison Available</h2>
             <p>This optimization was created before algorithm comparison was implemented.</p>
@@ -151,7 +151,7 @@ const AlgorithmComparison = () => {
         {/* Header */}
         <div className="comparison-header" data-aos="fade-up">
           <Link to={`/optimizations/${id}`} className="back-link">
-            <FaArrowLeft /> Back to Optimization
+            <ArrowLeft className="w-4 h-4" /> Back to Optimization
           </Link>
           <div className="header-content">
             <h1>Algorithm Comparison</h1>
@@ -169,7 +169,7 @@ const AlgorithmComparison = () => {
         {bestAlgorithm && (
           <div className="best-algorithm-banner" data-aos="fade-up">
             <div className="trophy-icon">
-              <FaTrophy />
+              <Trophy className="w-12 h-12 text-neon-warning" />
             </div>
             <div className="banner-content">
               <h3>Best Performing Algorithm</h3>
@@ -206,7 +206,7 @@ const AlgorithmComparison = () => {
                 <span className="algorithm-name">
                   {result.algorithm}
                   {bestAlgorithm && result.algorithm === bestAlgorithm.algorithm && (
-                    <FaTrophy className="best-badge" />
+                    <Trophy className="best-badge w-4 h-4 inline ml-1.5" />
                   )}
                 </span>
                 <span className="coverage">{result.coveragePercentage?.toFixed(1) || 0}%</span>
@@ -256,28 +256,28 @@ const AlgorithmComparison = () => {
                 <h3>Key Metrics</h3>
                 <div className="metrics-cards">
                   <div className="metric-card">
-                    <FaBullseye />
+                    <Target className="metric-icon w-8 h-8" />
                     <div className="metric-content">
                       <span className="metric-value">{algorithmResults[selectedAlgorithm].coveragePercentage?.toFixed(1) || 0}%</span>
                       <span className="metric-label">Coverage</span>
                     </div>
                   </div>
                   <div className="metric-card">
-                    <FaRoute />
+                    <Route className="metric-icon w-8 h-8" />
                     <div className="metric-content">
                       <span className="metric-value">{formatDistance(algorithmResults[selectedAlgorithm].totalDistance)}</span>
                       <span className="metric-label">Total Distance</span>
                     </div>
                   </div>
                   <div className="metric-card">
-                    <FaClock />
+                    <Clock className="metric-icon w-8 h-8" />
                     <div className="metric-content">
                       <span className="metric-value">{formatExecutionTime(algorithmResults[selectedAlgorithm].executionTime)}</span>
                       <span className="metric-label">Execution Time</span>
                     </div>
                   </div>
                   <div className="metric-card">
-                    <FaCalculator />
+                    <Calculator className="metric-icon w-8 h-8" />
                     <div className="metric-content">
                       <span className="metric-value">{algorithmResults[selectedAlgorithm].vehicleUtilization?.toFixed(1) || 0}%</span>
                       <span className="metric-label">Utilization</span>

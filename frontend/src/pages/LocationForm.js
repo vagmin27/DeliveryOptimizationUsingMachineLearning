@@ -5,6 +5,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import LocationSearch from '../components/LocationSearch';
 import { useToast } from '../components/ToastProvider';
+import { Search, Info, Loader2 } from 'lucide-react';
 import '../styles/Forms.css';
 
 const LocationForm = () => {
@@ -210,7 +211,7 @@ const LocationForm = () => {
           className={`btn ${showSearch ? 'btn-primary' : 'btn-secondary'}`}
           onClick={() => setShowSearch(!showSearch)}
         >
-          <i className="fas fa-search"></i> Search Location
+          <Search className="w-4 h-4 mr-2 inline" /> Search Location
         </button>
         <span className="option-divider">or</span>
         <span className="option-text">Click on the map below</span>
@@ -227,9 +228,9 @@ const LocationForm = () => {
 
       <div className="map-container" ref={mapRef}></div>
       <p className="map-help">
-        <i className="fas fa-info-circle"></i>
+        <Info className="w-4 h-4 mr-2 inline text-neon-primary" />
         Click on the map to set location coordinates. The location name and address will be automatically filled if available.
-        {geocoding && <span className="geocoding-indicator"> <i className="fas fa-spinner fa-spin"></i> Getting address...</span>}
+        {geocoding && <span className="geocoding-indicator"> <Loader2 className="w-4 h-4 animate-spin mr-1 inline" /> Getting address...</span>}
       </p>
 
       <form onSubmit={onSubmit}>

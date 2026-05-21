@@ -1,10 +1,14 @@
-/* client/src/styles/Map.css */
+/* ==========================================================================
+   MAP & SPATIAL STYLING
+   ========================================================================== */
+
 .map-wrapper {
   position: relative;
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--card-border);
 }
 
 .map-container {
@@ -22,44 +26,56 @@
   max-width: 400px;
 }
 
-/* Custom marker styles */
+/* ==========================================================================
+   CUSTOM MARKERS
+   ========================================================================== */
 .custom-marker {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 600 !important;
 }
 
 .custom-marker div {
   width: 36px !important;
   height: 36px !important;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   border: 2px solid white;
 }
 
-.custom-marker div:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+.custom-marker:hover div {
+  animation: none;
+  transform: scale(1.2);
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
 }
 
+/* Marker Types */
+.custom-marker.depot {
+  z-index: 700 !important;
+}
 .custom-marker.depot div {
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(135deg, #FF5733, #FF6B47);
 }
 
 .custom-marker.location div {
-  background: linear-gradient(135deg, #3357FF, #4A6FFF);
+  background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary));
 }
 
 .custom-marker.vehicle div {
-  background: linear-gradient(135deg, #33FF57, #4AFF6B);
+  background: linear-gradient(135deg, var(--neon-accent), #10b981);
 }
 
+.custom-marker.numbered-stop {
+  z-index: 650 !important;
+}
 .custom-marker.numbered-stop div {
   background: linear-gradient(135deg, #111827, #374151);
 }
@@ -68,7 +84,7 @@
 .route-stop-marker div {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,43 +95,49 @@
 }
 
 /* Vehicle marker */
+.vehicle-marker {
+  z-index: 800 !important;
+}
 .vehicle-marker div {
-  background: linear-gradient(135deg, #4A6FFF, #6B8FFF) !important;
+  background: linear-gradient(135deg, var(--neon-primary), var(--neon-secondary)) !important;
   border: 2px solid white !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
-/* Popup styles */
+/* ==========================================================================
+   POPUP STYLES
+   ========================================================================== */
 .leaflet-popup-content-wrapper {
   border-radius: var(--radius-md);
   padding: 0;
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--card-border);
 }
 
 .leaflet-popup-content {
   margin: 0;
   padding: 0;
-}
-
-.leaflet-popup-content h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.05rem;
+  font-family: inherit;
 }
 
 .location-popup,
 .route-popup,
 .stop-popup {
-  padding: 15px;
-  min-width: 200px;
+  padding: 16px;
+  min-width: 220px;
+  background: var(--card-bg);
+  color: var(--text-primary);
 }
 
 .location-popup h3,
 .route-popup h3,
 .stop-popup h3 {
-  margin: 0 0 10px 0;
-  color: #333;
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
   font-size: 16px;
-  border-bottom: 1px solid #eee;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 8px;
 }
 
@@ -123,9 +145,9 @@
 .route-popup p,
 .stop-popup p {
   margin: 0 0 8px 0;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .location-popup p:last-child,
@@ -134,7 +156,9 @@
   margin-bottom: 0;
 }
 
-/* Map toolbar */
+/* ==========================================================================
+   MAP CONTROLS & TOOLBARS
+   ========================================================================== */
 .map-toolbar {
   position: absolute;
   top: 20px;
@@ -147,27 +171,29 @@
 
 .map-toolbar button {
   padding: 8px 16px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 14px;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
 }
 
 .map-toolbar button:hover {
-  background: #f8f9fa;
-  border-color: #adb5bd;
+  background: var(--bg-tertiary);
+  border-color: var(--border-hover);
 }
 
 /* Route visibility controls */
 .route-visibility-controls {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
   padding: 12px;
   max-height: 200px;
   overflow-y: auto;
+  color: var(--text-primary);
 }
 
 .route-visibility-controls label {
@@ -187,72 +213,44 @@
   width: 12px;
   height: 12px;
   border-radius: 2px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
 }
 
 /* Map attribution */
 .leaflet-control-attribution {
   font-size: 11px;
-  color: #666;
+  color: var(--text-muted);
 }
 
-/* Dark theme support */
-.dark .map-toolbar button {
-  background: #374151;
-  border-color: #4B5563;
-  color: white;
+/* Route tooltip styling */
+.route-tooltip {
+  background: var(--overlay-bg);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(4px);
 }
 
-.dark .map-toolbar button:hover {
-  background: #4B5563;
+.leaflet-control {
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
-.dark .route-visibility-controls {
-  background: #374151;
-  border-color: #4B5563;
-  color: white;
-}
-
-.dark .route-visibility-controls label {
-  color: white;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .map-search-container {
-    max-width: calc(100% - 40px);
-  }
-  
-  .map-toolbar {
-    top: 10px;
-    right: 10px;
-  }
-  
-  .map-toolbar button {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-}
-
-/* Enhanced marker animations */
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
 @keyframes markerPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.9;
-  }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.95; }
 }
 
 @keyframes markerGlow {
-  0%, 100% {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-  50% {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  }
+  0%, 100% { box-shadow: var(--shadow-sm); }
+  50% { box-shadow: var(--shadow-glow); }
 }
 
 .custom-marker.depot div {
@@ -271,7 +269,6 @@
   animation: markerPulse 1.5s infinite;
 }
 
-/* Enhanced route styling */
 .leaflet-interactive {
   cursor: pointer !important;
 }
@@ -280,97 +277,14 @@
   filter: brightness(1.2);
 }
 
-/* Route tooltip styling */
-.route-tooltip {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Enhanced popup styling */
-.leaflet-popup-content-wrapper {
-  border-radius: 12px;
-  padding: 0;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.leaflet-popup-content {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.location-popup,
-.route-popup,
-.stop-popup {
-  padding: 16px;
-  min-width: 220px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-}
-
-.location-popup h3,
-.route-popup h3,
-.stop-popup h3 {
-  margin: 0 0 12px 0;
-  color: #1f2937;
-  font-size: 18px;
-  font-weight: 600;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 8px;
-}
-
-.location-popup p,
-.route-popup p,
-.stop-popup p {
-  margin: 0 0 8px 0;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.location-popup p:last-child,
-.route-popup p:last-child,
-.stop-popup p:last-child {
-  margin-bottom: 0;
-}
-
-/* Enhanced map controls */
-.leaflet-control-container .leaflet-routing-container-hide {
-  display: none !important;
-}
-
-.leaflet-control {
-  border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Route highlight effect */
 .route-highlight {
-  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+  filter: drop-shadow(0 0 8px var(--neon-primary));
   animation: routePulse 2s infinite;
 }
 
 @keyframes routePulse {
-  0%, 100% {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* Hover effects */
-.custom-marker:hover div {
-  animation: none;
-  transform: scale(1.2);
-  z-index: 1000;
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
 }
 
 /* Ensure markers are above other map elements */
@@ -378,18 +292,23 @@
   z-index: 500 !important;
 }
 
-.custom-marker {
-  z-index: 600 !important;
-}
-
-.custom-marker.depot {
-  z-index: 700 !important;
-}
-
-.custom-marker.numbered-stop {
-  z-index: 650 !important;
-}
-
-.vehicle-marker {
-  z-index: 800 !important;
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .map-search-container {
+    max-width: calc(100% - 40px);
+    left: 20px;
+    top: 10px;
+  }
+  
+  .map-toolbar {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .map-toolbar button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 }

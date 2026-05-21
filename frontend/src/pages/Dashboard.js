@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Truck, Map, Route, Plus, 
-  Clock, Zap, Activity, ShieldCheck, 
-  TrendingUp, Users, Box, AlertTriangle, AlertCircle
+  Zap, Activity, ShieldCheck, 
+  TrendingUp
 } from 'lucide-react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
@@ -13,7 +13,6 @@ import {
 import VehicleService from '../services/vehicle.service';
 import LocationService from '../services/location.service';
 import OptimizationService from '../services/optimization.service';
-import { useToast } from '../components/ToastProvider';
 
 // Mock Data for Charts
 const performanceData = [
@@ -68,13 +67,10 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const Dashboard = () => {
   const [stats, setStats] = useState({ totalVehicles: 0, totalLocations: 0, totalOptimizations: 0 });
-  const [loading, setLoading] = useState(true);
-  const { notify } = useToast();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const [vehiclesData, locationsData, optimizationsData] = await Promise.all([
           VehicleService.getAll().catch(() => []),
           LocationService.getAll().catch(() => []),
@@ -88,8 +84,6 @@ const Dashboard = () => {
         });
       } catch (err) {
         console.error('Dashboard fetch error:', err);
-      } finally {
-        setLoading(false);
       }
     };
     

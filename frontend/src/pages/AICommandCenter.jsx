@@ -12,7 +12,7 @@ import {
 const SOCKET_URL = 'http://localhost:5000';
 
 const AICommandCenter = () => {
-  const { setAgents, updateAgentLocation, parcels, setParcels } = useLogisticsStore();
+  const { updateAgentLocation } = useLogisticsStore();
   const [socket, setSocket] = useState(null);
   const [simRunning, setSimRunning] = useState(false);
   const [simSpeed, setSimSpeed] = useState(1);

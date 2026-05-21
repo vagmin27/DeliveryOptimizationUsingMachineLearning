@@ -43,7 +43,6 @@ const NewOptimization = () => {
 
       setVehicles(vehiclesRes || []);
       setLocations(locationsRes || []);
-      notify('Data loaded successfully', 'success', { autoClose: 2000 });
     } catch (err) {
       const errorMsg = 'Failed to load data';
       setError(errorMsg);
@@ -117,7 +116,6 @@ const NewOptimization = () => {
       if (event.ctrlKey && event.key === 'a' && step === 2) {
         event.preventDefault();
         handleSelectAllLocations();
-        notify(selectAllLocations ? 'All locations deselected' : 'All locations selected', 'info', { autoClose: 1500 });
       }
 
       // Enter to proceed to next step
@@ -318,19 +316,6 @@ const NewOptimization = () => {
     <div className="new-optimization-container container mx-auto px-6 py-8">
       <div className="flex justify-between items-center mb-6">
         <h1>New Optimization</h1>
-        <div className="help-tooltip">
-          <button
-            className="help-button"
-            onClick={() => notify(
-              'Keyboard shortcuts:\n• Ctrl+A: Select/Deselect all locations\n• Enter: Next step\n• Escape: Previous step',
-              'info',
-              { autoClose: 8000 }
-            )}
-            title="Show keyboard shortcuts"
-          >
-            ❓
-          </button>
-        </div>
       </div>
       
       <div className="stepper">

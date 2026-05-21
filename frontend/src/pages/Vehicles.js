@@ -10,8 +10,7 @@ import {
   FaTrash, 
   FaRoute, 
   FaChartLine,
-  FaCog,
-  FaInfoCircle
+  FaCog
 } from 'react-icons/fa';
 
 const Vehicles = () => {
@@ -26,7 +25,6 @@ const Vehicles = () => {
       const response = await VehicleService.getAll();
       setVehicles(response || []);
       setError('');
-      notify('Vehicles loaded successfully', 'success', { autoClose: 1200 });
     } catch (err) {
       setError('Failed to load vehicles');
       notify('Failed to load vehicles', 'error');

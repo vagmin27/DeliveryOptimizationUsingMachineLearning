@@ -92,7 +92,6 @@ const LocationForm = () => {
         demand: (demand || 0).toString(),
         isDepot: isDepot || false
       });
-      notify('Location data loaded successfully', 'success', { autoClose: 2000 });
     } catch (err) {
       const errorMsg = 'Failed to load location data';
       setError(errorMsg);

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OptimizationService from '../services/optimization.service';
 import '../styles/Optimizations.css';
-import LoadingSkeleton from '../components/LoadingSkeleton';
 import { useToast } from '../components/ToastProvider';
 
 const Optimizations = () => {
@@ -22,7 +21,6 @@ const Optimizations = () => {
       const response = await OptimizationService.getAll();
       setOptimizations(response);
       setError('');
-      notify('Optimizations loaded', 'success', { autoClose: 1200 });
     } catch (err) {
       setError('Failed to load optimizations');
       notify('Failed to load optimizations', 'error');

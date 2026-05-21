@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { useTheme } from '../context/ThemeContext';
-import { useToast } from '../components/ToastProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Box, 
@@ -20,7 +18,6 @@ import {
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
-  const { notify } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +33,6 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    notify('Logged out successfully', 'info');
     navigate('/login');
   };
 
@@ -59,8 +55,8 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8">
-          <div className={`glass-card rounded-2xl px-6 py-3 flex items-center justify-between ${
-            scrolled ? 'shadow-neon-primary bg-opacity-80' : 'bg-opacity-50'
+          <div className={`premium-navbar rounded-2xl px-6 py-3 flex items-center justify-between ${
+            scrolled ? 'scrolled' : ''
           }`}>
             
             {/* Logo */}
@@ -156,7 +152,7 @@ const Navbar = () => {
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(16px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-40 bg-background/80 lg:hidden pt-24 pb-6 px-6 flex flex-col"
+            className="fixed inset-0 z-40 mobile-menu-glass lg:hidden pt-24 pb-6 px-6 flex flex-col"
           >
             <div className="flex-1 overflow-y-auto">
               {currentUser ? (

@@ -1,104 +1,119 @@
+/* ==========================================================================
+   LOCATIONS MANAGEMENT PAGE
+   ========================================================================== */
+
 .locations-container {
-   padding: 1.5rem 0;
- }
- 
- .locations-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-bottom: 2rem;
- }
- 
- .locations-header h1 {
-   margin: 0;
- }
- 
- .map-wrapper {
-   margin-bottom: 2rem;
-   border-radius: 0.5rem;
-   overflow: hidden;
-   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
- }
- 
- .locations-list {
-   background-color: white;
-   border-radius: 0.5rem;
-   overflow: hidden;
-   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
- }
- 
- .locations-container .locations-list {
-  background: #fff;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  padding: 0.5rem 0.5rem 1rem;
+  padding: var(--spacing-lg) 0;
 }
 
-.locations-table tbody tr.selected {
-  background-color: rgba(0, 98, 230, 0.06);
+.locations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.locations-header h1 {
+  margin: 0;
+}
+
+.map-wrapper {
+  margin-bottom: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--card-border);
+}
+
+.locations-list {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--card-border);
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* ==========================================================================
+   LOCATIONS REGISTRY TABLE
+   ========================================================================== */
+.locations-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.locations-table th,
+.locations-table td {
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.locations-table th {
+  background-color: var(--table-header-bg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.locations-table tbody tr {
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  background-color: var(--card-bg);
+  cursor: pointer;
 }
 
 .locations-table tbody tr:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
 }
- 
- .locations-table {
-   width: 100%;
-   border-collapse: collapse;
- }
- 
- .locations-table th,
- .locations-table td {
-   padding: 1rem;
-   text-align: left;
-   border-bottom: 1px solid #e9ecef;
- }
 
- .locations-table td:nth-child(2) {
-   max-width: 200px;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
- }
- 
- .locations-table th {
-   background-color: #f8f9fa;
-   font-weight: 600;
- }
- 
- .locations-table tr:last-child td {
-   border-bottom: none;
- }
- 
- .locations-table tr:hover {
-   background-color: #f8f9fa;
- }
- 
- .table-actions {
-   display: flex;
-   gap: 0.5rem;
- }
- 
- .table-actions .btn {
-   padding: 0.25rem 0.5rem;
- }
- 
- .table-actions .btn i {
-   font-size: 0.875rem;
- }
- 
- @media (max-width: 992px) {
-   .locations-table {
-     display: block;
-     overflow-x: auto;
-     white-space: nowrap;
-   }
- }
- 
- @media (max-width: 768px) {
-   .locations-header {
-     flex-direction: column;
-     align-items: flex-start;
-     gap: 1rem;
-   }
- }
+.locations-table tbody tr.selected {
+  background-color: color-mix(in srgb, var(--neon-primary) 8%, transparent);
+  color: var(--text-primary);
+}
+
+.locations-table td:nth-child(2) {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.locations-table tr:last-child td {
+  border-bottom: none;
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.table-actions .btn {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.table-actions .btn i {
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 992px) {
+  .locations-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .locations-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+}

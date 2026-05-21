@@ -6,16 +6,28 @@ const ToastContext = createContext({ notify: () => {} });
 
 export const ToastProvider = ({ children }) => {
   const notify = useCallback((message, type = 'info', options = {}) => {
+    // Generate a unique toastId based on message content and type to prevent duplicate concurrent toasts
+    const toastId = options.toastId || (message + type);
+
+    // Set dynamic dismiss rates based on notification severity
+    let autoClose = 2000;
+    if (type === 'error') {
+      autoClose = 5000;
+    } else if (type === 'warning' || type === 'warn') {
+      autoClose = 4000;
+    }
+
     const defaultOptions = {
       position: 'top-right',
-      autoClose: 4000,
+      autoClose,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
       rtl: false,
-      theme: 'colored',
+      theme: 'light', // Standardized base theme for CSS override consistency
+      toastId,
       ...options
     };
 
@@ -51,7 +63,7 @@ export const ToastProvider = ({ children }) => {
       <ToastContainer 
         theme={theme}
         position="top-right"
-        autoClose={4000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop
         closeOnClick
@@ -59,15 +71,7 @@ export const ToastProvider = ({ children }) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        toastStyle={{
-          borderRadius: '12px',
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '14px',
-          fontWeight: '500'
-        }}
-        progressStyle={{
-          background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)'
-        }}
+        limit={3}
       />
     </ToastContext.Provider>
   );

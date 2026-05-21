@@ -51,9 +51,9 @@ const OptimizationDetail = () => {
         setRoutedPolylines(map);
 
         if (successCount > 0 && fallbackCount === 0) {
-          notify(`Real road routes loaded for all ${successCount} routes`, 'success', { autoClose: 2000 });
+          // Success toast removed
         } else if (successCount > 0) {
-          notify(`Real road routes loaded (${successCount} routes), ${fallbackCount} using straight lines`, 'info', { autoClose: 3000 });
+          notify(`Real road routes loaded (${successCount} routes), ${fallbackCount} using straight lines`, 'warning', { autoClose: 3000 });
         } else {
           notify('Using straight-line routes (road network unavailable)', 'warning', { autoClose: 2000 });
         }
@@ -73,7 +73,6 @@ const OptimizationDetail = () => {
       const response = await OptimizationService.get(id);
       setOptimization(response);
       setError('');
-      notify('Optimization loaded', 'success', { autoClose: 1200 });
     } catch (err) {
       setError('Failed to load optimization details');
       console.error(err);

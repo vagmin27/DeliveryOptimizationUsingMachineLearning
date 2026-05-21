@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import LocationService from '../services/location.service';
 import Map from '../components/Map';
 import '../styles/Locations.css';
-import LoadingSkeleton from '../components/LoadingSkeleton';
 import { useToast } from '../components/ToastProvider';
 import { FaPlus, FaMapMarkedAlt, FaEdit, FaTrash, FaWarehouse, FaMapPin } from 'react-icons/fa';
 
@@ -39,7 +38,6 @@ const Locations = () => {
       }
       
       setError('');
-      notify('Locations loaded successfully', 'success', { autoClose: 1200 });
     } catch (err) {
       setError('Failed to load locations');
       notify('Failed to load locations', 'error');

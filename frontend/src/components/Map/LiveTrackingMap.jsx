@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import HeatmapLayer from './HeatmapLayer';
 import useLogisticsStore from '../../store/useLogisticsStore';
-import { Truck, MapPin } from 'lucide-react';
 import 'leaflet/dist/leaflet.css';
 import '../../styles/Map.css';
 

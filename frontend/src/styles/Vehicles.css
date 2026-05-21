@@ -1,93 +1,115 @@
+/* ==========================================================================
+   VEHICLES MANAGEMENT PAGE
+   ========================================================================== */
+
 .vehicles-container {
-   padding: 1.5rem 0;
- }
- 
- .vehicles-header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-bottom: 2rem;
- }
- 
- .vehicles-header h1 {
-   margin: 0;
- }
- 
- .vehicles-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-   gap: 1.5rem;
- }
- 
- .vehicle-card {
-   background-color: white;
-   border-radius: 0.5rem;
-   padding: 1.5rem;
-   display: flex;
-   flex-direction: column;
-   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-   transition: transform 0.3s ease;
- }
- 
- .vehicle-card:hover {
-   transform: translateY(-5px);
- }
- 
- .vehicle-icon {
-   width: 60px;
-   height: 60px;
-   background-color: rgba(0, 123, 255, 0.1);
-   border-radius: 50%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-bottom: 1rem;
- }
- 
- .vehicle-icon i {
-   font-size: 1.75rem;
-   color: #007bff;
- }
- 
- .vehicle-details {
-   flex: 1;
-   margin-bottom: 1.5rem;
- }
- 
- .vehicle-details h3 {
-   margin-bottom: 1rem;
-   font-size: 1.25rem;
- }
- 
- .vehicle-details p {
-   margin-bottom: 0.5rem;
-   color: #6c757d;
- }
- 
- .vehicle-actions {
-   display: flex;
-   gap: 0.5rem;
- }
- 
- .vehicle-actions .btn {
-   flex: 1;
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
- 
- .vehicle-actions .btn i {
-   margin-right: 0.5rem;
- }
- 
- @media (max-width: 768px) {
-   .vehicles-header {
-     flex-direction: column;
-     align-items: flex-start;
-     gap: 1rem;
-   }
-   
-   .vehicles-grid {
-     grid-template-columns: 1fr;
-   }
- }
+  padding: var(--spacing-lg) 0;
+}
+
+.vehicles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.vehicles-header h1 {
+  margin: 0;
+}
+
+.vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.vehicle-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal), background-color var(--transition-fast);
+}
+
+.vehicle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--border-hover);
+}
+
+.vehicle-icon {
+  width: 60px;
+  height: 60px;
+  background-color: color-mix(in srgb, var(--neon-primary) 10%, transparent);
+  border-radius: var(--radius-full);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  transition: background-color var(--transition-fast);
+}
+
+.vehicle-icon i {
+  font-size: 1.75rem;
+  color: var(--neon-primary);
+}
+
+.vehicle-details {
+  flex: 1;
+  margin-bottom: var(--spacing-lg);
+}
+
+.vehicle-details h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.vehicle-details p {
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.vehicle-details p i {
+  width: 20px;
+  margin-right: var(--spacing-sm);
+  color: var(--neon-primary);
+}
+
+.vehicle-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.vehicle-actions .btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.vehicle-actions .btn i {
+  margin-right: var(--spacing-xs);
+}
+
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 768px) {
+  .vehicles-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .vehicles-grid {
+    grid-template-columns: 1fr;
+  }
+}

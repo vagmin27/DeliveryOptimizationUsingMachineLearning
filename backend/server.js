@@ -23,14 +23,25 @@ const app = express();
 const httpServer = createServer(app);
 
 // Initialize Socket.io
+const corsOptions = {
+  origin: [
+    "http://localhost:3000",
+    "https://delivery-optimization-using-machine-pi.vercel.app"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "x-auth-token"
+  ]
+};
+
 const io = new Server(httpServer, {
   cors: {
-    origin: [
-      "http://localhost:3000",
-      "https://delivery-optimization-using-machine-pi.vercel.app",
-    ],
+    origin: corsOptions.origin,
     methods: ["GET", "POST"],
-    credentials: true,
+    credentials: corsOptions.credentials,
   }
 });
 
@@ -39,17 +50,9 @@ setupTrackingSocket(io);
 setupSimulationSocket(io);
 
 // Middleware
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
-
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://delivery-optimization-using-machine-pi.vercel.app",
-    ],
-    credentials: true,
-  })
-);
 
 // Routes
 app.use("/api/auth", authRoutes);

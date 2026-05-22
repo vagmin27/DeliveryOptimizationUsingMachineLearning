@@ -18,6 +18,10 @@ import { Server } from "socket.io";
 // Load environment variables
 dotenv.config();
 
+console.log("MONGO_URI EXISTS:", !!process.env.MONGO_URI);
+console.log("JWT_SECRET EXISTS:", !!process.env.JWT_SECRET);
+console.log("NODE_ENV EXISTS:", !!process.env.NODE_ENV);
+
 // Initialize Express app
 const app = express();
 const httpServer = createServer(app);
@@ -75,7 +79,7 @@ app.use("/api/optimization", optimizationRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to MongoDB");
+    console.log("MongoDB Connected");
   })
   .catch((err) => {
     console.error("Could not connect to MongoDB", err);

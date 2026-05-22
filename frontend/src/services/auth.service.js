@@ -10,6 +10,7 @@ const register = async (name, email, password) => {
 
 const login = async (email, password) => {
   const response = await api.post('/auth/login', { email, password });
+  console.log("LOGIN RESPONSE:", response.data);
   if (response.data.token) {
     localStorage.setItem('token', response.data.token);
   }

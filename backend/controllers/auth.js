@@ -46,12 +46,14 @@ export const register = async (req, res) => {
 
 // Login user
 export const login = async (req, res) => {
+  console.log("LOGIN REQUEST BODY:", req.body);
   const { email, password } = req.body;
   console.log("LOGIN ROUTE HIT", email);
 
   try {
     // Check if user exists
     let user = await User.findOne({ email });
+    console.log("USER FOUND:", !!user);
     if (!user) {
       console.log("LOGIN FAILED: User not found for email:", email);
       return res.status(400).json({ msg: 'Invalid credentials' });
@@ -59,6 +61,7 @@ export const login = async (req, res) => {
 
     // Check password
     const isMatch = await user.comparePassword(password);
+    console.log("PASSWORD MATCH:", isMatch);
     if (!isMatch) {
       console.log("LOGIN FAILED: Password mismatch for email:", email);
       return res.status(400).json({ msg: 'Invalid credentials' });
@@ -71,6 +74,8 @@ export const login = async (req, res) => {
       }
     };
 
+    console.log("JWT_SECRET EXISTS:", !!process.env.JWT_SECRET);
+
     // Sign token
     jwt.sign(
       payload,
@@ -82,10 +87,13 @@ export const login = async (req, res) => {
           throw err;
         }
         console.log("LOGIN SUCCESS: Token generated for email:", email);
+        console.log("LOGIN SUCCESS");
         res.json({ token });
       }
     );
   } catch (err) {
+    const error = err;
+    console.error("LOGIN ERROR:", error);
     console.error("LOGIN CONTROLLER EXCEPTION:", err);
     res.status(500).send('Server error');
   }

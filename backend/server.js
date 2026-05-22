@@ -69,11 +69,19 @@ app.use(
 
 const io = new Server(httpServer, {
   cors: {
-    origin: corsOptions.origin,
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
-    credentials: corsOptions.credentials,
-  }
+    credentials: true,
+  },
 });
+
+// const io = new Server(httpServer, {
+//   cors: {
+//     origin: corsOptions.origin,
+//     methods: ["GET", "POST"],
+//     credentials: corsOptions.credentials,
+//   }
+// });
 
 // Setup Socket Handlers
 setupTrackingSocket(io);
@@ -82,7 +90,7 @@ setupSimulationSocket(io);
 // Middleware
 console.log("CORS middleware loaded");
 console.log("NODE_ENV:", process.env.NODE_ENV);
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // app.options("*", cors(corsOptions));
 // app.use(express.json());
 app.use(express.json());

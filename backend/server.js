@@ -45,27 +45,36 @@ const allowedOrigins = [
   "https://delivery-optimization-using-machine-pi.vercel.app",
 ];
 
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       // allow requests with no origin
+//       if (!origin) return callback(null, true);
+
+//       if (allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: [
+//       "Content-Type",
+//       "Authorization",
+//       "x-auth-token",
+//     ],
+//   })
+// );
+
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: allowedOrigins,
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "x-auth-token",
-    ],
   })
 );
+
+app.options("*", cors());
 
 const io = new Server(httpServer, {
   cors: {

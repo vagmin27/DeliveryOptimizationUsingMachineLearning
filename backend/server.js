@@ -27,19 +27,45 @@ const app = express();
 const httpServer = createServer(app);
 
 // Initialize Socket.io
-const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "https://delivery-optimization-using-machine-pi.vercel.app"
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "x-auth-token"
-  ]
-};
+// const corsOptions = {
+//   origin: [
+//     "http://localhost:3000",
+//     "https://delivery-optimization-using-machine-pi.vercel.app"
+//   ],
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: [
+//     "Content-Type",
+//     "Authorization",
+//     "x-auth-token"
+//   ]
+// };
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://delivery-optimization-using-machine-pi.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-auth-token",
+    ],
+  })
+);
 
 const io = new Server(httpServer, {
   cors: {
@@ -57,9 +83,10 @@ setupSimulationSocket(io);
 console.log("CORS middleware loaded");
 console.log("NODE_ENV:", process.env.NODE_ENV);
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
+// app.use(express.json());
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 // Health Check / Version endpoint
 app.get("/api/health", (req, res) => {
   res.json({

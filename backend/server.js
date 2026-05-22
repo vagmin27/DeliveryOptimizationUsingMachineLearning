@@ -56,6 +56,15 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());
 
+// Health Check / Version endpoint
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "ok",
+    version: "9da236f_with_health_check",
+    timestamp: new Date()
+  });
+});
+
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);

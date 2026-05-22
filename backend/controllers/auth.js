@@ -39,7 +39,7 @@ export const register = async (req, res) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
+    console.error("REGISTER CONTROLLER EXCEPTION:", err);
     res.status(500).send('Server error');
   }
 };
@@ -47,17 +47,20 @@ export const register = async (req, res) => {
 // Login user
 export const login = async (req, res) => {
   const { email, password } = req.body;
+  console.log("LOGIN ROUTE HIT", email);
 
   try {
     // Check if user exists
     let user = await User.findOne({ email });
     if (!user) {
+      console.log("LOGIN FAILED: User not found for email:", email);
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
     // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
+      console.log("LOGIN FAILED: Password mismatch for email:", email);
       return res.status(400).json({ msg: 'Invalid credentials' });
     }
 
@@ -74,12 +77,16 @@ export const login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: '5 days' },
       (err, token) => {
-        if (err) throw err;
+        if (err) {
+          console.error("JWT SIGN ERROR:", err);
+          throw err;
+        }
+        console.log("LOGIN SUCCESS: Token generated for email:", email);
         res.json({ token });
       }
     );
   } catch (err) {
-    console.error(err.message);
+    console.error("LOGIN CONTROLLER EXCEPTION:", err);
     res.status(500).send('Server error');
   }
 };

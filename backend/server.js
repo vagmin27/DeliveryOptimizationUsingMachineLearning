@@ -50,6 +50,8 @@ setupTrackingSocket(io);
 setupSimulationSocket(io);
 
 // Middleware
+console.log("CORS middleware loaded");
+console.log("NODE_ENV:", process.env.NODE_ENV);
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());

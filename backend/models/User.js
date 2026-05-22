@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
     theme: {
       type: String,
       enum: ["light", "dark"],
-      default: "light",
+      default: "dark",
     },
 
     defaultAlgorithm: {

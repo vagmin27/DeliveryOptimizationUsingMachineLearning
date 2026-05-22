@@ -27,7 +27,7 @@ const io = new Server(httpServer, {
   cors: {
     origin: [
       "http://localhost:3000",
-      "https://complexrouteoptimizer.netlify.app",
+      "https://delivery-optimization-using-machine-pi.vercel.app",
     ],
     methods: ["GET", "POST"],
     credentials: true,
@@ -39,17 +39,17 @@ setupTrackingSocket(io);
 setupSimulationSocket(io);
 
 // Middleware
+app.use(express.json());
+
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://complexrouteoptimizer.netlify.app",
+      "https://delivery-optimization-using-machine-pi.vercel.app",
     ],
     credentials: true,
   })
 );
-
-app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);

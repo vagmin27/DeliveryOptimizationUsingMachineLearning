@@ -48,8 +48,7 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
     
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="%PUBLIC_URL%/static/css/main.css" as="style" />
+
     
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -123,7 +122,8 @@
         });
       }
       
-      // Service Worker registration for PWA
+      // Service Worker registration disabled temporarily to prevent MIME type issues
+      /*
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
@@ -135,6 +135,7 @@
             });
         });
       }
+      */
     </script>
   </body>
 </html>

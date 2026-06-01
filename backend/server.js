@@ -29,17 +29,50 @@ const httpServer = createServer(app);
 const allowedOrigins = [
   "http://localhost:3000",
   "https://delivery-optimization-using-machine-pi.vercel.app",
+  "https://deliveryoptimization.vercel.app",
 ];
 
-// CORS Middleware
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps, curl, postman)
+    if (!origin) return callback(null, true);
 
-app.options("*", cors());
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    try {
+      const url = new URL(origin);
+      const hostname = url.hostname;
+      if (
+        hostname.endsWith(".vercel.app") &&
+        (hostname.includes("deliveryoptimization") || hostname.includes("delivery-optimization"))
+      ) {
+        return callback(null, true);
+      }
+    } catch (err) {
+      // invalid URL
+    }
+
+    // Support custom environment variable for origins
+    if (process.env.ALLOWED_ORIGINS) {
+      const customOrigins = process.env.ALLOWED_ORIGINS.split(",");
+      if (customOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"]
+};
+
+// CORS Middleware
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
 
 // Express Middlewares
 app.use(express.json());
@@ -47,11 +80,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Initialize Socket.io
 const io = new Server(httpServer, {
-  cors: {
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
+  cors: corsOptions,
 });
 
 // Setup Socket Handlers

@@ -10,7 +10,7 @@ const isLocalhost = Boolean(
     )
 );
 
-const API = process.env.REACT_APP_API_URL || (isLocalhost ? "http://localhost:5000" : "https://complexrouteoptimization.onrender.com");
+const API = process.env.REACT_APP_API_URL || (isLocalhost ? "http://localhost:5000" : "https://deliveryoptimizationusingmachinelearning.onrender.com");
 console.log("REACT_APP_API_URL resolve value:", process.env.REACT_APP_API_URL, "Resolved API:", API);
 const API_URL = `${API}/api`;
 // Create axios instance

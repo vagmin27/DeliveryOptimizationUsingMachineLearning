@@ -17,7 +17,7 @@ const isLocalhost = Boolean(
     )
 );
 
-const SOCKET_URL = process.env.REACT_APP_API_URL || (isLocalhost ? 'http://localhost:5000' : 'https://complexrouteoptimization.onrender.com');
+const SOCKET_URL = process.env.REACT_APP_API_URL || (isLocalhost ? 'http://localhost:5000' : 'https://deliveryoptimizationusingmachinelearning.onrender.com');
 
 const AICommandCenter = () => {
   const { updateAgentLocation } = useLogisticsStore();
